@@ -1,7 +1,33 @@
-<phpunit bootstrap="vendor/autoload.php">
-  <testsuites>    
-    <testsuite name="sdk">
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         stopOnFailure="false"
+         stopOnError="false"
+         stopOnIncomplete="false"
+         stopOnSkipped="false">
+  <testsuites>
+    <testsuite name="TheCompaniesApi SDK Test Suite">
       <directory>tests</directory>
-    </testsuite>  
+    </testsuite>
   </testsuites>
+  
+  <coverage includeUncoveredFiles="true">
+    <include>
+      <directory suffix=".php">src</directory>
+    </include>
+    <exclude>
+      <directory>src/Generated</directory>
+    </exclude>
+    <report>
+      <clover outputFile="coverage.xml"/>
+      <html outputDirectory="coverage-html"/>
+      <text outputFile="php://stdout" showUncoveredFiles="false"/>
+    </report>
+  </coverage>
+  
+  <logging>
+    <junit outputFile="junit.xml"/>
+  </logging>
 </phpunit>

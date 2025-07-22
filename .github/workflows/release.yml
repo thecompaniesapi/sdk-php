@@ -1,0 +1,81 @@
+name: Release & Publish
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish to Packagist
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        extensions: mbstring, xml, ctype, iconv, intl, pdo, curl, dom
+    
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-dev --optimize-autoloader
+    
+    - name: Validate package
+      run: |
+        composer validate --strict
+        composer dump-autoload --optimize --strict-psr
+    
+    - name: Extract version
+      id: extract_version
+      run: |
+        VERSION=${GITHUB_REF#refs/tags/}
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+        echo "clean_version=${VERSION#v}" >> $GITHUB_OUTPUT
+    
+    - name: Notify Packagist
+      env:
+        PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
+        PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
+      run: |
+        if [ -n "$PACKAGIST_USERNAME" ] && [ -n "$PACKAGIST_TOKEN" ]; then
+          echo "Notifying Packagist of new release..."
+          curl -XPOST -H 'content-type:application/json' \
+               "https://packagist.org/api/update-package?username=${PACKAGIST_USERNAME}&apiToken=${PACKAGIST_TOKEN}" \
+               -d '{"repository":{"url":"https://github.com/${{ github.repository }}"}}'
+          echo "✅ Packagist notified successfully"
+        else
+          echo "⚠️ Packagist credentials not found. Package will be updated via webhook if configured."
+        fi
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ steps.extract_version.outputs.version }}
+        name: Release ${{ steps.extract_version.outputs.version }}
+        body: |
+          ## 🚀 Release ${{ steps.extract_version.outputs.version }}
+          
+          ### 📦 Installation
+          
+          ```bash
+          composer require thecompaniesapi/sdk-php:^${{ steps.extract_version.outputs.clean_version }}
+          ```
+          
+          ### 📋 What's Changed
+          
+          See the [commit history](https://github.com/${{ github.repository }}/commits/${{ steps.extract_version.outputs.version }}) for detailed changes.
+          
+          ### 🔗 Links
+          
+          - 📖 [Documentation](https://github.com/${{ github.repository }}#readme)
+          - 📦 [Packagist Package](https://packagist.org/packages/thecompaniesapi/sdk-php)
+          - 🌐 [The Companies API](https://www.thecompaniesapi.com)
+          - 📚 [API Documentation](https://www.thecompaniesapi.com/api)
+        draft: false
+        prerelease: false
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
