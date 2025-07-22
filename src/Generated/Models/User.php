@@ -17,6 +17,7 @@ class User
     public mixed $emailVerified;
     public mixed $emailVerifiedResentAt;
     public mixed $fullName;
+    public mixed $hasPassword;
     public float $id;
     public mixed $locale = null;
     public mixed $pictureUrl;
@@ -33,6 +34,7 @@ class User
         $this->emailVerified = $data['emailVerified'] ?? null;
         $this->emailVerifiedResentAt = $data['emailVerifiedResentAt'] ?? null;
         $this->fullName = $data['fullName'] ?? null;
+        $this->hasPassword = $data['hasPassword'] ?? null;
         $this->id = $data['id'] ?? null;
         $this->locale = $data['locale'] ?? null;
         $this->pictureUrl = $data['pictureUrl'] ?? null;
@@ -51,6 +53,7 @@ class User
             'emailVerified' => $this->emailVerified,
             'emailVerifiedResentAt' => $this->emailVerifiedResentAt,
             'fullName' => $this->fullName,
+            'hasPassword' => $this->hasPassword,
             'id' => $this->id,
             'locale' => $this->locale,
             'pictureUrl' => $this->pictureUrl,

@@ -7817,7 +7817,7 @@ class OperationsMap
       ),
     ),
   ),
-  'listsToggleCompanies' => 
+  'toggleCompaniesInList' => 
   array (
     'path' => '/v2/lists/{listId}/companies/toggle',
     'method' => 'PATCH',

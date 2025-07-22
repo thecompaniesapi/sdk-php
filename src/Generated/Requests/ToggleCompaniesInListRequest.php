@@ -3,9 +3,9 @@
 namespace TheCompaniesApi\Sdk\Generated\Requests;
 
 /**
- * ListsToggleCompaniesRequest - API request class
+ * ToggleCompaniesInListRequest - API request class
  */
-class ListsToggleCompaniesRequest
+class ToggleCompaniesInListRequest
 {
     public ?string $action = null;
     public ?array $companyIds = null;
@@ -13,7 +13,7 @@ class ListsToggleCompaniesRequest
     public ?bool $refresh = null;
 
     /**
-     * Create a new ListsToggleCompaniesRequest
+     * Create a new ToggleCompaniesInListRequest
      *
      * @param array $data Array of properties (for backward compatibility)
      * @param ?string $action

@@ -3,11 +3,11 @@
 namespace TheCompaniesApi\Sdk\Generated\Responses;
 
 /**
- * ListsToggleCompaniesResponse - API response class
+ * ToggleCompaniesInListResponse - API response class
  * 
  * 
  */
-class ListsToggleCompaniesResponse
+class ToggleCompaniesInListResponse
 {
     public mixed $data = null;
 

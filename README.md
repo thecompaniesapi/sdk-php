@@ -565,7 +565,7 @@ $company = $response->data; // The company in the list
 
 ```php
 // Add companies to a list
-$response = $client->listsToggleCompanies('1234', [
+$response = $client->toggleCompaniesInList('1234', [
     'companies' => ['apple.com', 'stripe.com'],
     'action' => 'add'
 ]);
@@ -573,7 +573,7 @@ $response = $client->listsToggleCompanies('1234', [
 $list = $response->data; // The updated list
 
 // Remove companies from a list
-$response = $client->listsToggleCompanies('1234', [
+$response = $client->toggleCompaniesInList('1234', [
     'companies' => ['apple.com'],
     'action' => 'remove'
 ]);

@@ -658,22 +658,22 @@ class GeneratedClient extends BaseClient
      * Toggle one or more companies in a list.
      * 
      * @param string $listId Path parameter
-     * @param \TheCompaniesApi\Sdk\Generated\Requests\ListsToggleCompaniesRequest|array $data Request body data
+     * @param \TheCompaniesApi\Sdk\Generated\Requests\ToggleCompaniesInListRequest|array $data Request body data
      * @param array $headers Additional headers
-     * @return \TheCompaniesApi\Sdk\Generated\Responses\ListsToggleCompaniesResponse API response
+     * @return \TheCompaniesApi\Sdk\Generated\Responses\ToggleCompaniesInListResponse API response
      */
-    public function listsToggleCompanies(string $listId, \TheCompaniesApi\Sdk\Generated\Requests\ListsToggleCompaniesRequest|array $data = [], array $headers = []): \TheCompaniesApi\Sdk\Generated\Responses\ListsToggleCompaniesResponse
+    public function toggleCompaniesInList(string $listId, \TheCompaniesApi\Sdk\Generated\Requests\ToggleCompaniesInListRequest|array $data = [], array $headers = []): \TheCompaniesApi\Sdk\Generated\Responses\ToggleCompaniesInListResponse
     {
         $endpoint = '/v2/lists/' . $listId . '/companies/toggle';
         
         // Convert model to array if needed
-        if ($data instanceof \TheCompaniesApi\Sdk\Generated\Requests\ListsToggleCompaniesRequest) {
+        if ($data instanceof \TheCompaniesApi\Sdk\Generated\Requests\ToggleCompaniesInListRequest) {
             $data = $data->toArray();
         }
         
         $response = $this->patch($endpoint, $data, $headers);
         
-        return $this->createTypedResponse($response, '\TheCompaniesApi\Sdk\Generated\Responses\ListsToggleCompaniesResponse');
+        return $this->createTypedResponse($response, '\TheCompaniesApi\Sdk\Generated\Responses\ToggleCompaniesInListResponse');
     }
 
     /**
