@@ -52,7 +52,7 @@ $client = new Client([
 
 ### Search companies
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#companies-search)
+📖 [Documentation](https://www.thecompaniesapi.com/api/search-companies)
 
 🕹️ [Use case: How to build a company search engine with our API](https://www.thecompaniesapi.com/use-cases/companies-search-engine)
 
@@ -74,7 +74,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Search companies by name
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#companies-search-name)
+📖 [Documentation](https://www.thecompaniesapi.com/api/search-companies-name)
 
 🕹️ [Use case: Add a company search with autocomplete to your application](https://www.thecompaniesapi.com/use-cases/company-autocomplete)
 
@@ -90,7 +90,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Search companies using a prompt
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#companies-search-prompt)
+📖 [Documentation](https://www.thecompaniesapi.com/api/search-companies-prompt)
 
 ```php
 // Search 25 companies for a specific prompt
@@ -105,7 +105,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Search similar companies
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#companies-search-similar)
+📖 [Documentation](https://www.thecompaniesapi.com/api/search-similar-companies)
 
 ```php
 // Search 25 companies that are similar to Crisp and Intercom
@@ -120,7 +120,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Count companies matching your query
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#companies-count)
+📖 [Documentation](https://www.thecompaniesapi.com/api/count-companies)
 
 ```php
 // Count how many companies are in the computer-software industry
@@ -140,7 +140,7 @@ $count = $response->data; // Number of companies that match the query
 
 ### Enrich a company from a domain name
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#companies-enrich-from-domain)
+📖 [Documentation](https://www.thecompaniesapi.com/api/enrich-company-from-domain)
 
 ```php
 // Fetch company data from our database without enrichment (faster response)
@@ -158,7 +158,7 @@ $company = $response->data; // The company profile
 
 ### Enrich a company from an email
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#companies-enrich-from-email)
+📖 [Documentation](https://www.thecompaniesapi.com/api/enrich-company-from-email)
 
 🕹️ [Use case: Enrich your users at signup with the latest information about their company](https://www.thecompaniesapi.com/use-cases/enrich-users-signup)
 
@@ -173,7 +173,7 @@ $company = $response->data; // The company profile
 
 ### Enrich a company from a social network URL
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#companies-enrich-from-social-network-url)
+📖 [Documentation](https://www.thecompaniesapi.com/api/enrich-company-from-social-network-url)
 
 ```php
 // Fetch the company profile behind a social network URL
@@ -186,7 +186,7 @@ $company = $response->data; // The company profile
 
 ### Find a company email patterns
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#companies-find-email-patterns)
+📖 [Documentation](https://www.thecompaniesapi.com/api/fetch-company-email-patterns)
 
 ```php
 // Fetch the company email patterns for a specific domain
@@ -197,7 +197,7 @@ $patterns = $response->data; // The company email patterns
 
 ### Ask a question about a company
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#companies-ask)
+📖 [Documentation](https://www.thecompaniesapi.com/api/ask-company)
 
 ```php
 // Ask what products a company offers using its domain
@@ -219,7 +219,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Fetch the context of a company
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#companies-fetch-context)
+📖 [Documentation](https://www.thecompaniesapi.com/api/fetch-company-context)
 
 ```php
 // Get AI-generated strategic insights about a company
@@ -231,7 +231,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Fetch analytics data for a query or your lists
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#companies-fetch-analytics)
+📖 [Documentation](https://www.thecompaniesapi.com/api/fetch-companies-analytics)
 
 ```php
 // Analyze company distribution by business type
@@ -253,7 +253,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Export analytics data in multiple formats for a search
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#companies-export-analytics)
+📖 [Documentation](https://www.thecompaniesapi.com/api/export-companies-analytics)
 
 ```php
 // Export analytics to CSV
@@ -278,7 +278,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Request an action on one or more companies
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#actions-request-action)
+📖 [Documentation](https://www.thecompaniesapi.com/api/request-action)
 
 ```php
 // Request an enrichment job on multiple companies
@@ -294,7 +294,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Fetch the actions for your account
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#actions-fetch)
+📖 [Documentation](https://www.thecompaniesapi.com/api/fetch-actions)
 
 ```php
 // Fetch recent actions
@@ -310,7 +310,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Retry a failed action
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#actions-retry)
+📖 [Documentation](https://www.thecompaniesapi.com/api/retry-action)
 
 ```php
 // Retry a failed action
@@ -325,7 +325,7 @@ $action = $response->data; // Updated action status
 
 ### Search industries
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#industries-search)
+📖 [Documentation](https://www.thecompaniesapi.com/api/search-industries)
 
 ```php
 // Search industries by keyword
@@ -340,7 +340,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Find similar industries
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#industries-find-similar)
+📖 [Documentation](https://www.thecompaniesapi.com/api/find-similar-industries)
 
 ```php
 // Find industries similar to given ones
@@ -356,7 +356,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Search technologies
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#technologies-search)
+📖 [Documentation](https://www.thecompaniesapi.com/api/search-technologies)
 
 ```php
 // Search technologies by keyword
@@ -373,7 +373,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Search cities
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#locations-search-cities)
+📖 [Documentation](https://www.thecompaniesapi.com/api/search-cities)
 
 ```php
 // Search cities by name
@@ -388,7 +388,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Search counties
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#locations-search-counties)
+📖 [Documentation](https://www.thecompaniesapi.com/api/search-counties)
 
 ```php
 // Search counties by name
@@ -403,7 +403,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Search states
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#locations-search-states)
+📖 [Documentation](https://www.thecompaniesapi.com/api/search-states)
 
 ```php
 // Search states by name
@@ -418,7 +418,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Search countries
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#locations-search-countries)
+📖 [Documentation](https://www.thecompaniesapi.com/api/search-countries)
 
 ```php
 // Search countries by name
@@ -433,7 +433,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Search continents
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#locations-search-continents)
+📖 [Documentation](https://www.thecompaniesapi.com/api/search-continents)
 
 ```php
 // Search continents by name
@@ -450,7 +450,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Enrich a job title from its name
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#job-titles-enrich-from-name)
+📖 [Documentation](https://www.thecompaniesapi.com/api/enrich-job-title-from-name)
 
 ```php
 // Enrich "chief marketing officer"
@@ -465,7 +465,7 @@ $jobTitle = $response->data; // Contains department, seniority, etc.
 
 ### Fetch your lists
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#lists-fetch-lists)
+📖 [Documentation](https://www.thecompaniesapi.com/api/fetch-lists)
 
 ```php
 // Fetch your lists
@@ -477,7 +477,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Create a list of companies
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#lists-create-list)
+📖 [Documentation](https://www.thecompaniesapi.com/api/create-list)
 
 ```php
 // Create a list of companies
@@ -491,7 +491,7 @@ $newList = $response->data; // The new list
 
 ### Update a list
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#lists-update-list)
+📖 [Documentation](https://www.thecompaniesapi.com/api/update-list)
 
 ```php
 // Update a list
@@ -505,7 +505,7 @@ $updatedList = $response->data; // The updated list
 
 ### Delete a list
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#lists-delete-list)
+📖 [Documentation](https://www.thecompaniesapi.com/api/delete-list)
 
 ```php
 // Delete a list
@@ -516,7 +516,7 @@ $result = $response->data; // Deletion confirmation
 
 ### Fetch companies in your list
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#lists-fetch-companies)
+📖 [Documentation](https://www.thecompaniesapi.com/api/fetch-companies-in-list)
 
 ```php
 // Fetch companies in a list
@@ -528,7 +528,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Fetch companies in your list with POST body
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#lists-fetch-companies)
+📖 [Documentation](https://www.thecompaniesapi.com/api/fetch-companies-in-list)
 
 ```php
 // Fetch companies in a list with additional filtering
@@ -550,7 +550,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Get a specific company in your list
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#lists-fetch-company)
+📖 [Documentation](https://www.thecompaniesapi.com/api/fetch-company-in-list)
 
 ```php
 // Get a specific company in a list
@@ -561,7 +561,7 @@ $company = $response->data; // The company in the list
 
 ### Add or remove companies in your list
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#lists-toggle-companies)
+📖 [Documentation](https://www.thecompaniesapi.com/api/toggle-companies-in-list)
 
 ```php
 // Add companies to a list
@@ -585,7 +585,7 @@ $list = $response->data; // The updated list
 
 ### Fetch your team
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#teams-fetch-team)
+📖 [Documentation](https://www.thecompaniesapi.com/api/fetch-team)
 
 ```php
 // Fetch your team details
@@ -596,7 +596,7 @@ $team = $response->data; // Your team details
 
 ### Update your team
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#teams-update-team)
+📖 [Documentation](https://www.thecompaniesapi.com/api/update-team)
 
 ```php
 // Update your team
@@ -612,7 +612,7 @@ $team = $response->data; // Updated team details
 
 ### Fetch current user information
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#user-fetch-user)
+📖 [Documentation](https://www.thecompaniesapi.com/api/fetch-user)
 
 ```php
 // Fetch current user details
@@ -625,7 +625,7 @@ $user = $response->data; // Current user information
 
 ### Fetch prompts history
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#prompts-fetch-prompts)
+📖 [Documentation](https://www.thecompaniesapi.com/api/fetch-prompts)
 
 ```php
 // Fetch prompts history
@@ -640,7 +640,7 @@ $meta = $response->data->meta; // Meta information
 
 ### Delete a prompt
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#prompts-delete-prompt)
+📖 [Documentation](https://www.thecompaniesapi.com/api/delete-prompt)
 
 ```php
 // Delete a prompt
@@ -651,7 +651,7 @@ $result = $response->data; // Deletion confirmation
 
 ### Query the product prompt
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#prompts-product-prompt)
+📖 [Documentation](https://www.thecompaniesapi.com/api/product-prompt)
 
 ```php
 // Query the product prompt
@@ -665,7 +665,7 @@ $result = $response->data; // Product prompt response
 
 ### Convert a query to a segmentation
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#prompts-prompt-to-segmentation)
+📖 [Documentation](https://www.thecompaniesapi.com/api/prompt-to-segmentation)
 
 ```php
 // Convert a natural language query to segmentation
@@ -680,7 +680,7 @@ $segmentation = $response->data; // Generated segmentation query
 
 ### Fetch the health of the API
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#utilities-fetch-api-health)
+📖 [Documentation](https://www.thecompaniesapi.com/api/fetch-api-health)
 
 ```php
 // Check API health status
@@ -691,7 +691,7 @@ $health = $response->data; // The health of the API
 
 ### Fetch the OpenAPI schema
 
-📖 [Documentation](https://www.thecompaniesapi.com/api#utilities-fetch-open-api)
+📖 [Documentation](https://www.thecompaniesapi.com/api/fetch-openapi)
 
 ```php
 // Fetch OpenAPI schema
