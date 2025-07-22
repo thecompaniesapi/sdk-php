@@ -6,7 +6,7 @@ use TheCompaniesApi\Sdk\Client;
 use TheCompaniesApi\Sdk\ApiException;
 
 try {
-    $client = Client::create([
+    $client = new Client([
         'apiToken' => 'your-api-token',
         'visitorId' => 'demo-visitor'
     ]);
@@ -37,7 +37,7 @@ try {
     echo "   This would create: ?industries=" . urlencode('["technology","finance","healthcare"]') . "\n\n";
     
     try {
-        $arrayParams = $client->getCompanies([
+        $arrayParams = $client->searchCompanies([
             'industries' => ['technology', 'finance', 'healthcare'],
             'fields' => ['name', 'industry', 'website', 'employees'],
             'sort_by' => 'name'

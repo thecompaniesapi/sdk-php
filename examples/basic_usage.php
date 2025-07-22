@@ -8,7 +8,7 @@ use TheCompaniesApi\Sdk\ApiException;
 
 // Example 1: Create client with API token (similar to TypeScript SDK)
 try {
-    $client = Client::create([
+    $client = new Client([
         'apiToken' => 'your-api-token-here',
         'apiUrl' => 'https://api.thecompaniesapi.com', // optional, this is the default
         'visitorId' => 'visitor-123', // optional
@@ -29,13 +29,11 @@ try {
     echo "Response Data: " . json_encode($e->getResponseData()) . "\n";
 }
 
-// Example 2: Create client with API token (legacy method)
+// Example 2: Create client with simple API token
 try {
-    $client = Client::withApiToken('your-api-token-here');
+    $client = new Client(['apiToken' => 'your-api-token-here']);
     
-    $company = $client->getCompany('company-id-123', [
-        'include' => ['financials', 'officers']
-    ]);
+    $company = $client->fetchCompany('apple.com');
     
     echo "Company details:\n";
     print_r($company);
@@ -57,7 +55,7 @@ try {
         ]
     ]);
     
-    $client = Client::withConfiguration($config);
+    $client = new Client($config);
     
     // Make a custom request
     $response = $client->get('/custom-endpoint', [
@@ -74,7 +72,7 @@ try {
 
 // Example 4: Direct HTTP methods
 try {
-    $client = Client::create(['apiToken' => 'your-api-token']);
+    $client = new Client(['apiToken' => 'your-api-token']);
     
     // GET request
     $getResult = $client->get('/companies', ['limit' => 5]);
@@ -102,7 +100,7 @@ try {
 // Example 5: TypeScript SDK-like usage
 try {
     // This matches the TypeScript createClient() pattern
-    $client = Client::create([
+    $client = new Client([
         'apiToken' => 'your-api-token',
         'visitorId' => 'unique-visitor-id',
         'apiUrl' => 'https://api.thecompaniesapi.com',
