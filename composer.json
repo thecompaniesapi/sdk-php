@@ -1,0 +1,30 @@
+{
+    "name": "thecompaniesapi/sdk-php",
+    "description": "PHP SDK for The Companies API",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "TheCompaniesApi\\Sdk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "The Companies API SARL",
+            "email": "yael@thecompaniesapi.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0|^11.0"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "tests": "phpunit ./tests"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
