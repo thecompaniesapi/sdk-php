@@ -2,136 +2,57 @@
 
 namespace TheCompaniesApi\Sdk;
 
+use TheCompaniesApi\Sdk\Generated\GeneratedClient;
+
 /**
- * The main client for The Companies API SDK
+ * The Companies API Client
+ * 
+ * This is the main entry point for the SDK. It extends the auto-generated 
+ * client with all typed API methods from the OpenAPI specification.
+ * 
+ * The client provides:
+ * - Full type safety with auto-generated Request/Response classes
+ * - IDE autocompletion for all API operations
+ * - Automatic conversion between arrays and typed objects
+ * - Custom query parameter serialization (JSON encoding for objects/arrays)
+ * - Support for API token authentication and visitor ID tracking
+ * 
+ * @example Basic usage with array parameters:
+ * ```php
+ * $client = new Client([
+ *     'apiToken' => 'your-api-token',
+ *     'visitorId' => 'optional-visitor-id'
+ * ]);
+ * 
+ * $company = $client->fetchCompany('apple.com');
+ * $companies = $client->searchCompanies(['query' => 'technology']);
+ * ```
+ * 
+ * @example Usage with Configuration object:
+ * ```php
+ * $config = new Configuration([
+ *     'apiToken' => 'your-api-token',
+ *     'timeout' => 60
+ * ]);
+ * $client = new Client($config);
+ * ```
+ * 
+ * @example Typed usage:
+ * ```php
+ * use TheCompaniesApi\Sdk\Generated\Requests\SearchCompaniesPostRequest;
+ * 
+ * $request = new SearchCompaniesPostRequest(
+ *     query: ['industry' => 'technology'],
+ *     page: 1,
+ *     size: 10
+ * );
+ * 
+ * $response = $client->searchCompaniesPost($request);
+ * // $response is a SearchCompaniesPostResponse object
+ * ```
  */
-class Client
+class Client extends GeneratedClient
 {
-    private HttpClient $httpClient;
-    private Configuration $config;
-
-    public function __construct(Configuration $config)
-    {
-        $this->config = $config;
-        $this->httpClient = new HttpClient($config);
-    }
-
-    /**
-     * Create a client with API token authentication
-     */
-    public static function withApiToken(string $apiToken, array $options = []): self
-    {
-        $config = new Configuration(array_merge($options, ['apiToken' => $apiToken]));
-        return new self($config);
-    }
-
-    /**
-     * Create a client with custom configuration
-     */
-    public static function withConfiguration(Configuration $config): self
-    {
-        return new self($config);
-    }
-
-    /**
-     * Create a client with parameters similar to TypeScript SDK
-     */
-    public static function create(array $params = []): self
-    {
-        $config = new Configuration([
-            'apiToken' => $params['apiToken'] ?? null,
-            'apiUrl' => $params['apiUrl'] ?? 'https://api.thecompaniesapi.com',
-            'visitorId' => $params['visitorId'] ?? null,
-            'timeout' => $params['timeout'] ?? 30,
-            'verifySSL' => $params['verifySSL'] ?? true,
-        ]);
-        
-        return new self($config);
-    }
-
-    /**
-     * Get the configuration
-     */
-    public function getConfiguration(): Configuration
-    {
-        return $this->config;
-    }
-
-    /**
-     * Get the HTTP client
-     */
-    public function getHttpClient(): HttpClient
-    {
-        return $this->httpClient;
-    }
-
-    /**
-     * Make a GET request to any endpoint
-     */
-    public function get(string $endpoint, array $params = [], array $headers = []): array
-    {
-        return $this->httpClient->get($endpoint, $params, $headers);
-    }
-
-    /**
-     * Make a POST request to any endpoint
-     */
-    public function post(string $endpoint, array $data = [], array $headers = []): array
-    {
-        return $this->httpClient->post($endpoint, $data, $headers);
-    }
-
-    /**
-     * Make a PUT request to any endpoint
-     */
-    public function put(string $endpoint, array $data = [], array $headers = []): array
-    {
-        return $this->httpClient->put($endpoint, $data, $headers);
-    }
-
-    /**
-     * Make a PATCH request to any endpoint
-     */
-    public function patch(string $endpoint, array $data = [], array $headers = []): array
-    {
-        return $this->httpClient->patch($endpoint, $data, $headers);
-    }
-
-    /**
-     * Make a DELETE request to any endpoint
-     */
-    public function delete(string $endpoint, array $headers = []): array
-    {
-        return $this->httpClient->delete($endpoint, $headers);
-    }
-
-    // Here you can add specific API endpoint methods
-    // For example:
-    
-    /**
-     * Example method for companies endpoint
-     * This would be replaced with actual API endpoints once you know the API structure
-     */
-    public function getCompany(string $id, array $params = []): array
-    {
-        return $this->get("/companies/{$id}", $params);
-    }
-
-    /**
-     * Example method for searching companies
-     * This would be replaced with actual API endpoints once you know the API structure
-     */
-    public function searchCompanies(array $searchParams = []): array
-    {
-        return $this->get("/companies", $searchParams);
-    }
-
-    /**
-     * Example method for getting company data with filters
-     * This would be replaced with actual API endpoints once you know the API structure
-     */
-    public function getCompanies(array $filters = []): array
-    {
-        return $this->get("/companies", $filters);
-    }
+    // All functionality is inherited from GeneratedClient
+    // This class serves as the main public API interface
 }
