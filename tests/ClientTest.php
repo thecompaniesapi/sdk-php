@@ -7,28 +7,29 @@ use TheCompaniesApi\Sdk\Client;
 use TheCompaniesApi\Sdk\Configuration;
 use TheCompaniesApi\Sdk\HttpClient;
 use TheCompaniesApi\Sdk\ApiException;
+use TheCompaniesApi\Sdk\Generated\GeneratedClient;
 
 class ClientTest extends TestCase
 {
     public function testClientCreationWithApiToken()
     {
-        $client = Client::withApiToken('test-api-token');
+        $client = new Client(['apiToken' => 'test-api-token']);
         
-        $this->assertInstanceOf(Client::class, $client);
+        $this->assertInstanceOf(GeneratedClient::class, $client);
         $this->assertInstanceOf(Configuration::class, $client->getConfiguration());
         $this->assertEquals('test-api-token', $client->getConfiguration()->getApiToken());
     }
 
-    public function testClientCreationWithCreateMethod()
+    public function testClientCreationWithArrayParameters()
     {
-        $client = Client::create([
+        $client = new Client([
             'apiToken' => 'test-api-token',
             'apiUrl' => 'https://test.api.com',
             'visitorId' => 'visitor-123',
             'timeout' => 60
         ]);
         
-        $this->assertInstanceOf(Client::class, $client);
+        $this->assertInstanceOf(GeneratedClient::class, $client);
         $this->assertInstanceOf(Configuration::class, $client->getConfiguration());
         $this->assertEquals('test-api-token', $client->getConfiguration()->getApiToken());
         $this->assertEquals('https://test.api.com', $client->getConfiguration()->getBaseUrl());
@@ -45,9 +46,9 @@ class ClientTest extends TestCase
             'timeout' => 60
         ]);
 
-        $client = Client::withConfiguration($config);
+        $client = new Client($config);
         
-        $this->assertInstanceOf(Client::class, $client);
+        $this->assertInstanceOf(GeneratedClient::class, $client);   
         $this->assertSame($config, $client->getConfiguration());
         $this->assertEquals('https://test.api.com', $client->getConfiguration()->getBaseUrl());
         $this->assertEquals('test-token', $client->getConfiguration()->getApiToken());
@@ -215,9 +216,9 @@ class ClientTest extends TestCase
 
     public function testCreateClientDefaults()
     {
-        $client = Client::create();
+        $client = new Client();
         
-        $this->assertInstanceOf(Client::class, $client);
+        $this->assertInstanceOf(GeneratedClient::class, $client);
         $this->assertEquals('https://api.thecompaniesapi.com', $client->getConfiguration()->getBaseUrl());
         $this->assertNull($client->getConfiguration()->getApiToken());
         $this->assertNull($client->getConfiguration()->getVisitorId());
