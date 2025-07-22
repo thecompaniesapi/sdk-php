@@ -106,21 +106,6 @@ class IntegrationTest extends TestCase
         $this->assertInstanceOf(SearchCompaniesResponse::class, $response);
         $this->assertIsArray($response->companies);
         $this->assertIsObject($response->meta);
-        
-        echo sprintf(
-            "Search returned %d companies out of %s total\n", 
-            count($response->companies), 
-            $response->meta->total ?? 'unknown'
-        );
-        
-        if (count($response->companies) > 0) {
-            $company = $response->companies[0];
-            if (isset($company['about']['name'])) {
-                echo sprintf("First company: %s\n", $company['about']['name']);
-            }
-        } else {
-            echo "No companies found, but request succeeded\n";
-        }
     }
     
     /**
@@ -148,8 +133,6 @@ class IntegrationTest extends TestCase
         
         $this->assertInstanceOf(SearchCompaniesPostResponse::class, $response);
         $this->assertIsArray($response->companies);
-        
-        echo sprintf("Query search returned %d companies\n", count($response->companies));
     }
     
     /**
@@ -167,8 +150,6 @@ class IntegrationTest extends TestCase
         $this->assertInstanceOf(CountCompaniesResponse::class, $response);
         $this->assertIsNumeric($response->count);
         $this->assertGreaterThanOrEqual(0, $response->count);
-        
-        echo sprintf("Total companies matching 'software': %s\n", $response->count);
     }
     
     /**
@@ -194,8 +175,6 @@ class IntegrationTest extends TestCase
         
         $this->assertInstanceOf(CountCompaniesPostResponse::class, $response);
         $this->assertIsNumeric($response->count);
-        
-        echo sprintf("Total SaaS companies: %s\n", $response->count);
     }
     
     /**
@@ -213,38 +192,16 @@ class IntegrationTest extends TestCase
         ];
         
         foreach ($testCases as $testCase) {
-                         try {
-                 $response = $client->fetchCompanyByEmail([
-                     'email' => $testCase['email']
-                 ]);
-                 
-                 $this->assertInstanceOf(FetchCompanyByEmailResponse::class, $response);
-                 
-                 if (isset($response->company)) {
-                     $company = $response->company;
-                     if (isset($company->about['name'])) {
-                         echo sprintf(
-                             "Found company for %s: %s\n", 
-                             $testCase['email'], 
-                             $company->about['name']
-                         );
-                     }
-                     
-                     if (isset($company->domain['domain'])) {
-                         echo sprintf("Company domain: %s\n", $company->domain['domain']);
-                     }
-                 } else {
-                     echo sprintf("No company found for email %s\n", $testCase['email']);
-                 }
-                 
-             } catch (ApiException $e) {
-                 echo sprintf(
-                     "FetchCompanyByEmail failed for %s: %s\n", 
-                     $testCase['email'], 
-                     $e->getMessage()
-                 );
-                 // Don't fail the test - the email might not be in the database
-             }
+            try {
+                $response = $client->fetchCompanyByEmail([
+                    'email' => $testCase['email']
+                ]);
+                
+                $this->assertInstanceOf(FetchCompanyByEmailResponse::class, $response);
+                
+            } catch (ApiException $e) {
+                // Don't fail the test - the email might not be in the database
+            }
         }
         
         // At least verify that the method exists and can be called
@@ -265,13 +222,9 @@ class IntegrationTest extends TestCase
             ]);
             
             // If we get here, check the response for error indicators
-            echo "Unexpectedly got successful response for invalid email\n";
             $this->assertInstanceOf(FetchCompanyByEmailResponse::class, $response);
             
         } catch (ApiException $e) {
-            echo sprintf("Expected error for invalid email format: %s\n", $e->getMessage());
-            echo sprintf("Error code: %d\n", $e->getCode());
-            
             // This is expected behavior
             $this->assertInstanceOf(ApiException::class, $e);
         }
@@ -304,8 +257,6 @@ class IntegrationTest extends TestCase
         $this->assertInstanceOf(SearchCompaniesPostResponse::class, $response);
         $this->assertIsArray($response->companies);
         
-        echo sprintf("Complex query returned %d companies\n", count($response->companies));
-        
         // This test verifies that our query serialization works correctly
         // with complex nested parameters matching TypeScript SDK behavior
     }
@@ -326,7 +277,6 @@ class IntegrationTest extends TestCase
         try {
             $response = $client->countCompanies(['search' => 'test']);
             $this->assertInstanceOf(CountCompaniesResponse::class, $response);
-            echo "Client configuration test passed\n";
         } catch (ApiException $e) {
             $this->fail(sprintf("Client configuration test failed: %s", $e->getMessage()));
         }
@@ -339,33 +289,23 @@ class IntegrationTest extends TestCase
      */
     public function testFullIntegrationFlow(): void
     {
-        echo "\n=== Running Full Integration Test Flow ===\n";
-        
         // Test 1: Basic search
-        echo "\n1. Testing basic search...\n";
         $this->testSearchCompaniesBasic();
         
         // Test 2: Complex query search
-        echo "\n2. Testing complex query search...\n";
         $this->testSearchCompaniesWithQuery();
         
         // Test 3: Count operations
-        echo "\n3. Testing count operations...\n";
         $this->testCountCompaniesBasic();
         $this->testCountCompaniesWithQuery();
         
         // Test 4: Company lookup
-        echo "\n4. Testing company lookup...\n";
         $this->testFetchCompanyByEmail();
         
         // Test 5: Error handling
-        echo "\n5. Testing error handling...\n";
         $this->testErrorHandling();
         
         // Test 6: Query serialization
-        echo "\n6. Testing query serialization...\n";
         $this->testComplexQuerySerialization();
-        
-        echo "\n=== Integration Test Flow Complete ===\n";
     }
 } 

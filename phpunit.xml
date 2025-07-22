@@ -13,20 +13,6 @@
     </testsuite>
   </testsuites>
   
-  <coverage includeUncoveredFiles="true">
-    <include>
-      <directory suffix=".php">src</directory>
-    </include>
-    <exclude>
-      <directory>src/Generated</directory>
-    </exclude>
-    <report>
-      <clover outputFile="coverage.xml"/>
-      <html outputDirectory="coverage-html"/>
-      <text outputFile="php://stdout" showUncoveredFiles="false"/>
-    </report>
-  </coverage>
-  
   <logging>
     <junit outputFile="junit.xml"/>
   </logging>
