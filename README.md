@@ -37,7 +37,7 @@ require_once 'vendor/autoload.php';
 
 use TheCompaniesApi\Sdk\Client;
 
-$client = Client::create([
+$client = new Client([
     'apiToken' => 'your-api-token',
 ]);
 ```

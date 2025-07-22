@@ -114,4 +114,4 @@ settings.local.php
 *.cache
 
 # Session files
-/sessions/ 
+/sessions/
