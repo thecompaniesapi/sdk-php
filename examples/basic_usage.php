@@ -6,7 +6,7 @@ use TheCompaniesApi\Sdk\Client;
 use TheCompaniesApi\Sdk\Configuration;
 use TheCompaniesApi\Sdk\ApiException;
 
-// Example 1: Create client with API token (similar to TypeScript SDK)
+// Example 1: Create client with API token
 try {
     $client = new Client([
         'apiToken' => 'your-api-token-here',
@@ -96,25 +96,3 @@ try {
 } catch (ApiException $e) {
     echo "API Error: " . $e->getMessage() . "\n";
 }
-
-// Example 5: TypeScript SDK-like usage
-try {
-    // This matches the TypeScript createClient() pattern
-    $client = new Client([
-        'apiToken' => 'your-api-token',
-        'visitorId' => 'unique-visitor-id',
-        'apiUrl' => 'https://api.thecompaniesapi.com',
-    ]);
-    
-    // Make requests with visitor tracking
-    $companies = $client->searchCompanies([
-        'query' => 'tech companies',
-        'limit' => 20
-    ]);
-    
-    echo "Companies with visitor tracking:\n";
-    print_r($companies);
-    
-} catch (ApiException $e) {
-    echo "API Error: " . $e->getMessage() . "\n";
-} 

@@ -113,7 +113,6 @@ class HttpClient
 
     /**
      * Build query string from parameters
-     * Matches TypeScript SDK behavior: JSON encode objects/arrays, then URL encode
      */
     private function buildQueryString(array $params): string
     {
@@ -121,7 +120,6 @@ class HttpClient
         
         foreach ($params as $key => $value) {
             if (is_array($value) || is_object($value)) {
-                // JSON encode objects and arrays, then URL encode (matches TypeScript SDK)
                 $jsonEncoded = json_encode($value);
                 $queryPairs[] = urlencode($key) . '=' . urlencode($jsonEncoded);
             } else {

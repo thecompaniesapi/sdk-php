@@ -97,5 +97,4 @@ echo "📋 Benefits of Code Generation:\n";
 echo "✓ Type-safe method calls\n";
 echo "✓ IDE autocompletion\n";
 echo "✓ Automatic documentation\n";
-echo "✓ Matches TypeScript SDK API exactly\n";
 echo "✓ Always up-to-date with API changes\n"; 

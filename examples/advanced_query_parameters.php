@@ -11,7 +11,7 @@ try {
         'visitorId' => 'demo-visitor'
     ]);
     
-    // Example 1: Complex filter objects (like TypeScript SDK)
+    // Example 1: Complex filter objects
     echo "1. Complex Filter Objects:\n";
     echo "   This would create: ?filters=" . urlencode('{"industry":"technology","location":{"country":"US","state":"CA"},"size":"large"}') . "\n\n";
     
@@ -99,9 +99,6 @@ try {
             'max' => 500
         ]
     ];
-    
-    echo "   This demonstrates deeply nested objects being JSON-encoded\n";
-    echo "   exactly like the TypeScript SDK would handle them.\n\n";
     
     try {
         $advancedQuery = $client->searchCompanies($advancedFilters);

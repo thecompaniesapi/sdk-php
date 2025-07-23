@@ -256,9 +256,6 @@ class IntegrationTest extends TestCase
         
         $this->assertInstanceOf(SearchCompaniesPostResponse::class, $response);
         $this->assertIsArray($response->companies);
-        
-        // This test verifies that our query serialization works correctly
-        // with complex nested parameters matching TypeScript SDK behavior
     }
     
     /**
