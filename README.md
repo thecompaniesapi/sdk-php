@@ -68,8 +68,8 @@ $response = $client->searchCompanies([
     'size' => 25
 ]);
 
-$companies = $response->data->companies; // Companies that match the query
-$meta = $response->data->meta; // Meta information
+$companies = $response->companies; // Companies that match the query
+$meta = $response->meta; // Meta information
 ```
 
 ### Search companies by name
@@ -84,8 +84,8 @@ $response = $client->searchCompaniesByName([
     'size' => 2
 ]);
 
-$companies = $response->data->companies; // Companies that match the name
-$meta = $response->data->meta; // Meta information
+$companies = $response->companies; // Companies that match the name
+$meta = $response->meta; // Meta information
 ```
 
 ### Search companies using a prompt
@@ -99,8 +99,8 @@ $response = $client->searchCompaniesByPrompt([
     'size' => 25
 ]);
 
-$companies = $response->data->companies; // Companies that match the prompt
-$meta = $response->data->meta; // Meta information
+$companies = $response->companies; // Companies that match the prompt
+$meta = $response->meta; // Meta information
 ```
 
 ### Search similar companies
@@ -114,8 +114,8 @@ $response = $client->searchSimilarCompanies([
     'size' => 25
 ]);
 
-$companies = $response->data->companies; // Companies that are similar to the domains
-$meta = $response->data->meta; // Meta information
+$companies = $response->companies; // Companies that are similar to the domains
+$meta = $response->meta; // Meta information
 ```
 
 ### Count companies matching your query
@@ -135,7 +135,7 @@ $response = $client->countCompanies([
     ]
 ]);
 
-$count = $response->data; // Number of companies that match the query
+$count = $response; // Number of companies that match the query
 ```
 
 ### Enrich a company from a domain name
@@ -146,14 +146,14 @@ $count = $response->data; // Number of companies that match the query
 // Fetch company data from our database without enrichment (faster response)
 $response = $client->fetchCompany('microsoft.com');
 
-$company = $response->data; // The company profile
+$company = $response; // The company profile
 
 // Fetch company data and re-analyze it in real-time to get fresh, up-to-date information (slower but more accurate)
 $response = $client->fetchCompany('microsoft.com', [
     'refresh' => true
 ]);
 
-$company = $response->data; // The company profile
+$company = $response; // The company profile
 ```
 
 ### Enrich a company from an email
@@ -168,7 +168,7 @@ $response = $client->fetchCompanyByEmail([
     'email' => 'jack@openai.com'
 ]);
 
-$company = $response->data; // The company profile
+$company = $response; // The company profile
 ```
 
 ### Enrich a company from a social network URL
@@ -181,7 +181,7 @@ $response = $client->fetchCompanyBySocial([
     'linkedin' => 'https://www.linkedin.com/company/apple'
 ]);
 
-$company = $response->data; // The company profile
+$company = $response; // The company profile
 ```
 
 ### Find a company email patterns
@@ -192,7 +192,7 @@ $company = $response->data; // The company profile
 // Fetch the company email patterns for a specific domain
 $response = $client->fetchCompanyEmailPatterns('apple.com');
 
-$patterns = $response->data; // The company email patterns
+$patterns = $response; // The company email patterns
 ```
 
 ### Ask a question about a company
@@ -213,8 +213,8 @@ $response = $client->askCompany('microsoft.com', [
     ]
 ]);
 
-$answer = $response->data->answer; // Structured AI response
-$meta = $response->data->meta; // Meta information
+$answer = $response->answer; // Structured AI response
+$meta = $response->meta; // Meta information
 ```
 
 ### Fetch the context of a company
@@ -225,8 +225,8 @@ $meta = $response->data->meta; // Meta information
 // Get AI-generated strategic insights about a company
 $response = $client->fetchCompanyContext('microsoft.com');
 
-$context = $response->data->context; // Includes market, model, differentiators, etc.
-$meta = $response->data->meta; // Meta information
+$context = $response->context; // Includes market, model, differentiators, etc.
+$meta = $response->meta; // Meta information
 ```
 
 ### Fetch analytics data for a query or your lists
@@ -247,8 +247,8 @@ $response = $client->fetchCompaniesAnalytics([
     ]
 ]);
 
-$analytics = $response->data->data; // Aggregated values
-$meta = $response->data->meta; // Meta information
+$analytics = $response->data; // Aggregated values
+$meta = $response->meta; // Meta information
 ```
 
 ### Export analytics data in multiple formats for a search
@@ -270,8 +270,8 @@ $response = $client->exportCompaniesAnalytics([
     ]
 ]);
 
-$analytics = $response->data->data; // Aggregated values
-$meta = $response->data->meta; // Meta information
+$analytics = $response->data; // Aggregated values
+$meta = $response->meta; // Meta information
 ```
 
 ## 🎯 Actions
@@ -288,8 +288,8 @@ $response = $client->requestAction([
     'estimate' => false
 ]);
 
-$actions = $response->data->actions; // Track this via fetchActions
-$meta = $response->data->meta; // Meta information
+$actions = $response->actions; // Track this via fetchActions
+$meta = $response->meta; // Meta information
 ```
 
 ### Fetch the actions for your account
@@ -304,8 +304,8 @@ $response = $client->fetchActions([
     'size' => 5
 ]);
 
-$actions = $response->data->actions; // Actions that match the query
-$meta = $response->data->meta; // Meta information
+$actions = $response->actions; // Actions that match the query
+$meta = $response->meta; // Meta information
 ```
 
 ### Retry a failed action
@@ -318,7 +318,7 @@ $response = $client->retryAction('action-id-123', [
     'reason' => 'Network timeout resolved'
 ]);
 
-$action = $response->data; // Updated action status
+$action = $response; // Updated action status
 ```
 
 ## 🏭 Industries
@@ -334,8 +334,8 @@ $response = $client->searchIndustries([
     'size' => 10
 ]);
 
-$industries = $response->data->industries; // Industries that match the keyword
-$meta = $response->data->meta; // Meta information
+$industries = $response->industries; // Industries that match the keyword
+$meta = $response->meta; // Meta information
 ```
 
 ### Find similar industries
@@ -348,8 +348,8 @@ $response = $client->searchIndustriesSimilar([
     'industries' => ['saas', 'fintech']
 ]);
 
-$similar = $response->data->industries; // Industries that are similar to the given ones
-$meta = $response->data->meta; // Meta information
+$similar = $response->industries; // Industries that are similar to the given ones
+$meta = $response->meta; // Meta information
 ```
 
 ## ⚛️ Technologies
@@ -365,8 +365,8 @@ $response = $client->searchTechnologies([
     'size' => 10
 ]);
 
-$technologies = $response->data->technologies; // Technologies that match the keyword
-$meta = $response->data->meta; // Meta information
+$technologies = $response->technologies; // Technologies that match the keyword
+$meta = $response->meta; // Meta information
 ```
 
 ## 🌍 Locations
@@ -382,8 +382,8 @@ $response = $client->searchCities([
     'size' => 5
 ]);
 
-$cities = $response->data->cities; // Cities that match the name
-$meta = $response->data->meta; // Meta information
+$cities = $response->cities; // Cities that match the name
+$meta = $response->meta; // Meta information
 ```
 
 ### Search counties
@@ -397,8 +397,8 @@ $response = $client->searchCounties([
     'size' => 5
 ]);
 
-$counties = $response->data->counties; // Counties that match the name
-$meta = $response->data->meta; // Meta information
+$counties = $response->counties; // Counties that match the name
+$meta = $response->meta; // Meta information
 ```
 
 ### Search states
@@ -412,8 +412,8 @@ $response = $client->searchStates([
     'size' => 5
 ]);
 
-$states = $response->data->states; // States that match the name
-$meta = $response->data->meta; // Meta information
+$states = $response->states; // States that match the name
+$meta = $response->meta; // Meta information
 ```
 
 ### Search countries
@@ -427,8 +427,8 @@ $response = $client->searchCountries([
     'size' => 5
 ]);
 
-$countries = $response->data->countries; // Countries that match the name
-$meta = $response->data->meta; // Meta information
+$countries = $response->countries; // Countries that match the name
+$meta = $response->meta; // Meta information
 ```
 
 ### Search continents
@@ -442,8 +442,8 @@ $response = $client->searchContinents([
     'size' => 5
 ]);
 
-$continents = $response->data->continents; // Continents that match the name
-$meta = $response->data->meta; // Meta information
+$continents = $response->continents; // Continents that match the name
+$meta = $response->meta; // Meta information
 ```
 
 ## 💼 Job titles
@@ -458,7 +458,7 @@ $response = $client->enrichJobTitles([
     'name' => 'chief marketing officer'
 ]);
 
-$jobTitle = $response->data; // Contains department, seniority, etc.
+$jobTitle = $response; // Contains department, seniority, etc.
 ```
 
 ## 📋 Lists
@@ -471,8 +471,8 @@ $jobTitle = $response->data; // Contains department, seniority, etc.
 // Fetch your lists
 $response = $client->fetchLists();
 
-$lists = $response->data->lists; // Lists that match the query
-$meta = $response->data->meta; // Meta information
+$lists = $response->lists; // Lists that match the query
+$meta = $response->meta; // Meta information
 ```
 
 ### Create a list of companies
@@ -486,7 +486,7 @@ $response = $client->createList([
     'type' => 'companies'
 ]);
 
-$newList = $response->data; // The new list
+$newList = $response; // The new list
 ```
 
 ### Update a list
@@ -500,7 +500,7 @@ $response = $client->updateList('1234', [
     'description' => 'Updated list description'
 ]);
 
-$updatedList = $response->data; // The updated list
+$updatedList = $response; // The updated list
 ```
 
 ### Delete a list
@@ -511,7 +511,7 @@ $updatedList = $response->data; // The updated list
 // Delete a list
 $response = $client->deleteList('1234');
 
-$result = $response->data; // Deletion confirmation
+$result = $response; // Deletion confirmation
 ```
 
 ### Fetch companies in your list
@@ -522,8 +522,8 @@ $result = $response->data; // Deletion confirmation
 // Fetch companies in a list
 $response = $client->fetchCompaniesInList('1234');
 
-$companies = $response->data->companies; // Companies that match the list
-$meta = $response->data->meta; // Meta information
+$companies = $response->companies; // Companies that match the list
+$meta = $response->meta; // Meta information
 ```
 
 ### Fetch companies in your list with POST body
@@ -544,8 +544,8 @@ $response = $client->fetchCompaniesInListPost('1234', [
     'size' => 10
 ]);
 
-$companies = $response->data->companies; // Filtered companies in the list
-$meta = $response->data->meta; // Meta information
+$companies = $response->companies; // Filtered companies in the list
+$meta = $response->meta; // Meta information
 ```
 
 ### Get a specific company in your list
@@ -556,7 +556,7 @@ $meta = $response->data->meta; // Meta information
 // Get a specific company in a list
 $response = $client->fetchCompanyInList('1234', 'apple.com');
 
-$company = $response->data; // The company in the list
+$company = $response; // The company in the list
 ```
 
 ### Add or remove companies in your list
@@ -570,7 +570,7 @@ $response = $client->toggleCompaniesInList('1234', [
     'action' => 'add'
 ]);
 
-$list = $response->data; // The updated list
+$list = $response; // The updated list
 
 // Remove companies from a list
 $response = $client->toggleCompaniesInList('1234', [
@@ -578,7 +578,7 @@ $response = $client->toggleCompaniesInList('1234', [
     'action' => 'remove'
 ]);
 
-$list = $response->data; // The updated list
+$list = $response; // The updated list
 ```
 
 ## 👥 Teams
@@ -591,7 +591,7 @@ $list = $response->data; // The updated list
 // Fetch your team details
 $response = $client->fetchTeam('team-id-123');
 
-$team = $response->data; // Your team details
+$team = $response; // Your team details
 ```
 
 ### Update your team
@@ -605,7 +605,7 @@ $response = $client->updateTeam('team-id-123', [
     'description' => 'Updated team description'
 ]);
 
-$team = $response->data; // Updated team details
+$team = $response; // Updated team details
 ```
 
 ## 👤 User
@@ -618,7 +618,7 @@ $team = $response->data; // Updated team details
 // Fetch current user details
 $response = $client->fetchUser();
 
-$user = $response->data; // Current user information
+$user = $response; // Current user information
 ```
 
 ## 🤖 Prompts
@@ -634,8 +634,8 @@ $response = $client->fetchPrompts([
     'size' => 10
 ]);
 
-$prompts = $response->data->prompts; // Prompts history
-$meta = $response->data->meta; // Meta information
+$prompts = $response->prompts; // Prompts history
+$meta = $response->meta; // Meta information
 ```
 
 ### Delete a prompt
@@ -646,7 +646,7 @@ $meta = $response->data->meta; // Meta information
 // Delete a prompt
 $response = $client->deletePrompt('prompt-id-123');
 
-$result = $response->data; // Deletion confirmation
+$result = $response; // Deletion confirmation
 ```
 
 ### Query the product prompt
@@ -660,7 +660,7 @@ $response = $client->productPrompt([
     'context' => 'collaboration software'
 ]);
 
-$result = $response->data; // Product prompt response
+$result = $response; // Product prompt response
 ```
 
 ### Convert a query to a segmentation
@@ -673,7 +673,7 @@ $response = $client->promptToSegmentation([
     'prompt' => 'Companies in California with more than 100 employees'
 ]);
 
-$segmentation = $response->data; // Generated segmentation query
+$segmentation = $response; // Generated segmentation query
 ```
 
 ## 🔧 Utilities
@@ -686,7 +686,7 @@ $segmentation = $response->data; // Generated segmentation query
 // Check API health status
 $response = $client->fetchApiHealth();
 
-$health = $response->data; // The health of the API
+$health = $response; // The health of the API
 ```
 
 ### Fetch the OpenAPI schema
@@ -697,7 +697,7 @@ $health = $response->data; // The health of the API
 // Fetch OpenAPI schema
 $response = $client->fetchOpenApi();
 
-$schema = $response->data; // The OpenAPI schema
+$schema = $response; // The OpenAPI schema
 ```
 
 ## 🔄 Advanced Usage
